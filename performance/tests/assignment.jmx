@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test A" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="base_url" elementType="Argument">
+              <stringProp name="Argument.name">base_url</stringProp>
+              <stringProp name="Argument.value">practice.automationtesting.in</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+            <collectionProp name="CookieManager.cookies"/>
+            <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+            <boolProp name="CookieManager.controlledByThreadGroup">true</boolProp>
+          </CookieManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create User" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="email" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${random_user}@test.com</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">email</stringProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Appl!c@t!0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                </elementProp>
+                <elementProp name="woocommerce-register-nonce" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">0855994b2d</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">woocommerce-register-nonce</stringProp>
+                </elementProp>
+                <elementProp name="register" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Register</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">register</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/my-account</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+              <stringProp name="maximumValue">999999</stringProp>
+              <stringProp name="minimumValue">111111</stringProp>
+              <stringProp name="outputFormat">test_user_000000</stringProp>
+              <boolProp name="perThread">true</boolProp>
+              <stringProp name="randomSeed"></stringProp>
+              <stringProp name="variableName">random_user</stringProp>
+            </RandomVariableConfig>
+            <hashTree/>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login User" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">${random_user}@test.com</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">username</stringProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Appl!c@t!0</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                </elementProp>
+                <elementProp name="woocommerce-login-nonce" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">d9f5e013dc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">woocommerce-login-nonce</stringProp>
+                </elementProp>
+                <elementProp name="login" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">Login</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">login</stringProp>
+                </elementProp>
+                <elementProp name="_wp_http_referer" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">/my-account/</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">_wp_http_referer</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/my-account</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add to Cart" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="product_sku" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">product_sku</stringProp>
+                </elementProp>
+                <elementProp name="product_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">169</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">product_id</stringProp>
+                </elementProp>
+                <elementProp name="quantity" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">quantity</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/?wc-ajax=add_to_cart</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="true">
+          <collectionProp name="prometheus.collector_definitions">
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">create_user_summary</stringProp>
+              <stringProp name="collector.type">SUMMARY</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">create_user_count_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">CountTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">create_user_histrogram</stringProp>
+              <stringProp name="collector.type">HISTOGRAM</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+              <stringProp name="listener.collector.measuring">ResponseTime</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">create_user_success_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">login_user_summary</stringProp>
+              <stringProp name="collector.type">SUMMARY</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">login_user_count_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">CountTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">login_user_histogram</stringProp>
+              <stringProp name="collector.type">HISTOGRAM</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">100,500,1000,3000</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">login_user_success_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">multi_user_add_cart_summary</stringProp>
+              <stringProp name="collector.type">SUMMARY</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">multi_user_add_cart_count_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">CountTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">multi_user_add_cart_histogram</stringProp>
+              <stringProp name="collector.type">GAUGE</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">multi_user_add_cart_success_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="TestPlan.comments">Listener for first thread group</stringProp>
+        </com.github.johrstrom.listener.PrometheusListener>
+        <hashTree/>
+        <com.github.johrstrom.config.PrometheusMetricsConfig guiclass="com.github.johrstrom.config.gui.PrometheusMetricsConfigGui" testclass="com.github.johrstrom.config.PrometheusMetricsConfig" testname="Prometheus Metrics" enabled="true">
+          <collectionProp name="prometheus.collector_definitions">
+            <elementProp name="" elementType="com.github.johrstrom.collector.BaseCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">test_a_total_count</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+            </elementProp>
+          </collectionProp>
+        </com.github.johrstrom.config.PrometheusMetricsConfig>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test B" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="base_url" elementType="Argument">
+              <stringProp name="Argument.name">base_url</stringProp>
+              <stringProp name="Argument.value">practice.automationtesting.in</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">/Users/ravindra.belgaonkar/Desktop/Personal/Workspace/assignment/performance/tests/book_details.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">product_id,quantity,product_sku</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies">
+            <elementProp name="__gads" elementType="Cookie" testname="__gads">
+              <stringProp name="Cookie.value">ID=7e02dbf5baaec50f-22a103c2b2d00034:T=1645364123:RT=1645364123:S=ALNI_MbOpGyHh9eqMiXW8QGCdEnXhxkp7w</stringProp>
+              <stringProp name="Cookie.domain"></stringProp>
+              <stringProp name="Cookie.path"></stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tccl_visitor" elementType="Cookie" testname="_tccl_visitor">
+              <stringProp name="Cookie.value">2677799d-4568-4185-b467-09595a04efc6</stringProp>
+              <stringProp name="Cookie.domain"></stringProp>
+              <stringProp name="Cookie.path"></stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tccl_visit" elementType="Cookie" testname="_tccl_visit">
+              <stringProp name="Cookie.value">2677799d-4568-4185-b467-09595a04efc6</stringProp>
+              <stringProp name="Cookie.domain"></stringProp>
+              <stringProp name="Cookie.path"></stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login User" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="username" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">ravi.test001@mailinator.com</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">username</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">Appl!c@t!0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+              </elementProp>
+              <elementProp name="woocommerce-login-nonce" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">d9f5e013dc</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">woocommerce-login-nonce</stringProp>
+              </elementProp>
+              <elementProp name="login" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">Login</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">login</stringProp>
+              </elementProp>
+              <elementProp name="_wp_http_referer" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">/my-account/</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">_wp_http_referer</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/my-account/</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add to Cart" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="product_sku" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">${product_sku}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">product_sku</stringProp>
+              </elementProp>
+              <elementProp name="product_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">${product_id}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">product_id</stringProp>
+              </elementProp>
+              <elementProp name="quantity" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.value">${quantity}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">quantity</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop/?wc-ajax=add_to_cart</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="true">
+          <collectionProp name="prometheus.collector_definitions">
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">single_user_add_cart_summary</stringProp>
+              <stringProp name="collector.type">SUMMARY</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">single_user_add_cart_count_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">CountTotal</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">single_user_add_cart_histogram</stringProp>
+              <stringProp name="collector.type">GAUGE</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+            </elementProp>
+            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">single_user_add_cart_success_total</stringProp>
+              <stringProp name="collector.type">COUNTER</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets"></stringProp>
+              <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="TestPlan.comments">Listener for first thread group</stringProp>
+        </com.github.johrstrom.listener.PrometheusListener>
+        <hashTree/>
+        <com.github.johrstrom.config.PrometheusMetricsConfig guiclass="com.github.johrstrom.config.gui.PrometheusMetricsConfigGui" testclass="com.github.johrstrom.config.PrometheusMetricsConfig" testname="Prometheus Metrics" enabled="true">
+          <collectionProp name="prometheus.collector_definitions">
+            <elementProp name="" elementType="com.github.johrstrom.collector.BaseCollectorConfig">
+              <stringProp name="collector.help">default help string</stringProp>
+              <stringProp name="collector.metric_name">test_b_total_count</stringProp>
+              <stringProp name="collector.type">SUCCESS_RATIO</stringProp>
+              <collectionProp name="collector.labels"/>
+              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
+            </elementProp>
+          </collectionProp>
+        </com.github.johrstrom.config.PrometheusMetricsConfig>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
